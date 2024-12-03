@@ -1,0 +1,9 @@
+{
+	"$schema": "https://michielmag.github.io/bnrun/schema.json#",
+	"day:${day}": {
+		"command": ["bun ./day-${day}/main.ts"]
+	},
+	"lint": {
+		"command": ["eslint 'day-*/**/*'"]
+	}
+}
