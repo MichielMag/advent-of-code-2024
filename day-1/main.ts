@@ -12,8 +12,21 @@ const [left, right] = data.split('\n').reduce<number[][]>(
 	},
 	[[], []]
 );
-const sum = left.reduce(
+
+const amounts = right.reduce<Record<number, number>>((prev, cur) => {
+	const x = {
+		...prev,
+		[cur]: prev[cur] !== undefined ? prev[cur] + 1 : 1,
+	};
+	return x;
+}, {});
+
+const suma = left.reduce(
 	(prev, cur, index) => prev + Math.abs(cur - right[index]),
 	0
 );
-console.log(sum);
+
+const sumb = left.map(x => (amounts[x] ?? 0) * x).reduce((p, c) => p + c);
+
+console.log('part 1:', suma);
+console.log('part 2:', sumb);
